@@ -11,6 +11,7 @@ const Content = ({course}) => {
     <div>
       <Header course={course} />
       {results}
+      <Total course={course.parts} />
     </div>
   )
 }

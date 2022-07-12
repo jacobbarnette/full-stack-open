@@ -1,11 +1,14 @@
 const Total = ({course}) => {
-  let total = 0;
+  let  newArr = [];
+  let initialValue = 0;
   course.map(course => {
-    total += course.exercises
+    newArr.push(course.exercises)
   })
+  let newValue = newArr.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue
+  );
   return(
     <div>
-      <p>Total Number of exercises {total}</p>
+      <p>Total Number of exercises {newValue}</p>
     </div>
   )
 }

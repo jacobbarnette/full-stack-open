@@ -3,15 +3,25 @@ import Part from './Part'
 import Total from './Total'
 
 const Content = ({course}) => {
- const results = course.parts.map(item => {
-  return(<Part key={item.id}course={item.name} exercise={item.exercises} />)
- })
+  let reactContent = [];
+  let nodeContent = []
+  Object.keys(course).map(x => {
+    if(x != 1){
+      course[x].parts.map(item => {
+        reactContent.push(<Part key={item.id}course={item.name} exercise={item.exercises} />)
+      })
+    }else if (x != 0){
+      course[x].parts.map(item =>
+      nodeContent.push(<Part key={item.id}course={item.name} exercise={item.exercises} />)
+   ) }})
 
   return(
     <div>
-      <Header course={course} />
-      {results}
-      <Total course={course.parts} />
+      <Header id={0}course={course} />
+      {reactContent}
+      <Header id={1} course={course} />
+      {nodeContent}
+      <Total course={course} />
     </div>
   )
 }

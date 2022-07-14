@@ -2,15 +2,21 @@ import { useState } from 'react'
 let testCondition = true
 const App = () => {
   const [persons, setPersons] = useState([
-    {name: 'Arto Hellas'}
+    {
+      name: 'Arto Hellas',
+      number: '040-234-9812'
+    }
   ])
+
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
 
   const handleSubmit = (e) => {
     containsObject()
     e.preventDefault()
     const personObject = {
-      name: newName
+      name: newName,
+      number: newNumber
     }
     if(testCondition){
       setPersons(persons.concat(personObject))
@@ -19,6 +25,10 @@ const App = () => {
   }
   const handleNameChange = (e) => {
     setNewName(e.target.value)
+  }
+
+  const handleNumberChange = (e) => {
+    setNewNumber(e.target.value)
   }
   
   function containsObject(){
@@ -37,8 +47,9 @@ const App = () => {
       <form onSubmit={handleSubmit}>
         <div>
           name: <input value={newName} onChange={handleNameChange}/>
-        </div>
-        <div>
+          number: <input value={newNumber} onChange={handleNumberChange} />
+    
+        
           <button type='submit'>add</button>
         </div>
       </form>
@@ -46,7 +57,7 @@ const App = () => {
        {persons.map(person => {
          
          return(
-           <p>{person.name}</p>
+           <p key={person.number}>{person.name} {person.number}</p>
          )
        })}
     </div>

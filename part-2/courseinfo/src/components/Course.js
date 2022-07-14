@@ -4,6 +4,7 @@ import Total from './Total'
 
 const Content = ({course}) => {
   let reactContent = [];
+  console.log(course)
   let nodeContent = []
   Object.keys(course).map(x => {
     if(x != 1){
@@ -13,7 +14,9 @@ const Content = ({course}) => {
     }else if (x != 0){
       course[x].parts.map(item =>
       nodeContent.push(<Part key={item.id}course={item.name} exercise={item.exercises} />)
-   ) }})
+   )
+   }
+  })
 
   return(
     <div>

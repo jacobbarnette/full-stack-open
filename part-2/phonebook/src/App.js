@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+let testCondition = true
 const App = () => {
   const [persons, setPersons] = useState([
     {name: 'Arto Hellas'}
@@ -7,18 +7,29 @@ const App = () => {
   const [newName, setNewName] = useState('')
 
   const handleSubmit = (e) => {
+    containsObject()
     e.preventDefault()
     const personObject = {
       name: newName
     }
-    setPersons(persons.concat(personObject))
-    setNewName('')
-    console.log(persons)
+    if(testCondition){
+      setPersons(persons.concat(personObject))
+      setNewName('')
+    }
   }
   const handleNameChange = (e) => {
     setNewName(e.target.value)
   }
-
+  
+  function containsObject(){
+    persons.map(person => {
+      if(person.name === newName) {
+        alert(`${newName} is already added to phonebook`)
+        testCondition = false
+        setNewName('')
+      } 
+    })
+  }
   
   return(
     <div>

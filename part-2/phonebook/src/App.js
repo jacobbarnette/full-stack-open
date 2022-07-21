@@ -1,33 +1,21 @@
-import { useState } from 'react'
-
+import { useState, useEffect} from 'react'
+import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
+
 let testCondition = true
 const App = () => {
-  const [persons, setPersons] = useState([
-    {
-      name: 'Arto Hellas',
-      number: '040-234-9812'
-    },
-    {
-      name: 'Tyrion Fordrgon',
-      number: '040-233-9812'
-    },
-    {
-      name: 'Jaina Proudmore',
-      number: '040-334-9812'
-    },
-    {
-      name: 'Arthas Menethil',
-      number: '040-254-9812'
-    },
-  ])
+  const [persons, setPersons] = useState([])
 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filterText, setFilterText] = useState('')
 
+  useEffect(() => {
+    axios.get('http://localhost:3001/persons')
+          .then(response => {setPersons(response.data)})
+  }, [])
   const handleSubmit = (e) => {
     containsObject()
     e.preventDefault()

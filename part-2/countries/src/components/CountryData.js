@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import Country from "./Country";
+import CountryList from "./CountryList";
 
 const CountryData = ({countries}) => {
   let renderedData;
@@ -18,10 +19,8 @@ const CountryData = ({countries}) => {
     ) 
   } else if (countries.length > 1 || countries.length <= 10){
      
-      renderedData = countries.map(country => {
-        return(
-          <h2>{country.name.common}</h2>
-        )
+      renderedData = countries.map((country, index) => {
+       return <CountryList index={index}countries={countries}/>
        
       }) 
     } return renderedData

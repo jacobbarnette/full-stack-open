@@ -1,17 +1,20 @@
-const Country = ({countries}) => {
-  console.log('lol',countries)
+const Country = ({countries, index}) => {
+  if(countries[index].name.common = undefined){
+    console.log('error')
+  }
   return(
-   <div>
-   <h2>{countries[0].name.common}</h2>
-   <p>Capital: {countries[0].capital[0]}</p>
-   <p>Area: {countries[0].area}</p>
-   <img src={countries[0].flags.png}></img>
-   <h3>Languages </h3>
-    <ul>
-      <li>{countries[0].languages.swe}</li>
-    </ul>
-   </div>
-  )
-}
+  <div>
+  <h2>{countries[index].name.common}</h2>
+  <p>Capital: {countries[index].capital[index]}</p>
+  <p>Area: {countries[index].area}</p>
+  <img src={countries[index].flags.png}></img>
+  <h3>Languages </h3>
+   <ul>
+     <li>{countries[index].languages.swe}</li>
+   </ul>
+   <input type='submit'/>
+  </div>
+ )
+  }
 
-export default Country 
+export default Country

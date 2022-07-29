@@ -16,13 +16,18 @@ const App = () => {
     axios.get('http://localhost:3001/persons')
           .then(response => {setPersons(response.data)})
   }, [])
+
   const handleSubmit = (e) => {
-    containsObject()
     e.preventDefault()
+    containsObject()
+   
     const personObject = {
       name: newName,
       number: newNumber
     }
+    axios
+      .post('http://localhost:3001/persons', personObject)
+      .then(response => console.log(response))
     if(testCondition){
       setPersons(persons.concat(personObject))
       setNewName('')
@@ -30,10 +35,12 @@ const App = () => {
     }
   }
   const handleNameChange = (e) => {
+    e.preventDefault()
     setNewName(e.target.value)
   }
 
   const handleNumberChange = (e) => {
+    e.preventDefault()
     setNewNumber(e.target.value)
   }
   
@@ -61,7 +68,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Filter filterText={filterText} handleFilterText={handleFilterText}/>
-      <PersonForm handleSubmit={handleSubmit} newName={newName}  handleNumberChange={handleNumberChange} newNumber={newNumber} />
+      <PersonForm handleSubmit={handleSubmit} handleNameChange={handleNameChange} newName={newName}  handleNumberChange={handleNumberChange} newNumber={newNumber} />
       <h2>Numbers</h2>
       {renderedPeople.map(person => {
         

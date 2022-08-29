@@ -47,4 +47,11 @@ app.get("/info", (req, res) => {
   res.send(`<p>Phonebook has ${phoneBook} entries</p><p>${date}</p>`);
 });
 
+app.delete("/api/persons/:id", (req, res) => {
+  const id = Number(req.params.id);
+  person = persons.filter((person) => person.id === id);
+
+  response.status(204).end();
+});
+
 app.listen(port);

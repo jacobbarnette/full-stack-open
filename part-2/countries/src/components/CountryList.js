@@ -1,19 +1,21 @@
 
 import Country from './Country'
 const CountryList = ({countries, index, clicked, setClicked}) => {
-  console.log(setClicked)
+  console.log(countries[index].clicked)
   
   const handleClick = () => {
+    
     if(!clicked){
-      console.log('hew')
+      console.log(countries[index].clicked, index)
+      console.log(index)
     }
-      setClicked(!clicked)
+      setClicked(!countries[index].clicked)
       
     }
   
-    if(clicked){
+    if(countries[index].clicked){
       return( <Country countries={countries} index={index} />)
-    }else if(!clicked) {
+    }else if(!countries[index].clicked) {
     return(
       <div>
            <p><li>{countries[index].name.common}</li><input value='show' onClick={handleClick} type='submit'/></p> 

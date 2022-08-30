@@ -4,6 +4,14 @@ const morgan = require("morgan");
 const app = express();
 const port = 3001;
 
+morgan.token("data", (request, response) => {
+  return request.method === "POST" ? JSON.stringify(request.body) : " ";
+});
+
+app.use(
+  morgan(":method :url :status :res[content-length] - :response-time ms :data")
+);
+
 app.use(express.json());
 app.use(morgan("tiny"));
 let persons = [

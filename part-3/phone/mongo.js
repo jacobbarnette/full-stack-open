@@ -7,16 +7,14 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const password = process.argv[2];
-const url = `mongodb+srv://jbarnette:${password}@cluster0.gi3jype.mongodb.net/?retryWrites=true&w=majority`;
+//const password = process.argv[2];
+//const url = ``;
 
-mongoose.connect(url).then(console.log("connected"));
-
-const phoneScehma = new mongoose.Schema({
-  name: String,
-  number: String,
-});
-const Phone = mongoose.model("Phone", phoneScehma);
+//const phoneScehma = new mongoose.Schema({
+//name: String,
+//number: String,
+//});
+//const Phone = mongoose.model("Phone", phoneScehma);
 
 if (process.argv.length === 3) {
   Phone.find({}).then((result) => {

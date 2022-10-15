@@ -1,4 +1,4 @@
-import axios from "axios";
+/*import axios from "axios";
 const baseUrl = "/api/persons";
 
 const getAll = () => {
@@ -27,3 +27,4 @@ export default {
   update,
   remove,
 };
+*/
